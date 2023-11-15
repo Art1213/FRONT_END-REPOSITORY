@@ -1,25 +1,38 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const Formulario = () => {
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
 
-export default App;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Nome: ', nome);
+    console.log('Email: ', email);
+    // Adicione aqui a lógica para enviar os dados para o servidor
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Nome:</label>
+        <input
+          type="text"
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  );
+};
+
+export default Formulario;
